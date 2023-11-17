@@ -1,0 +1,29 @@
+{% extends 'skillapp/base.html'%}
+{% load bootstrap4 %}
+{% load crispy_forms_tags %}
+{% block content %}
+<style>
+    .small-search-bar {
+        width: 300px;
+    }
+    .center-container {
+        display: flex;
+        justify-content: center;
+        align-items: center;
+    }
+</style>
+<main class="px-3">
+    <h1>Find What You Wanted To Learn</h1>
+    <p class="lead">Cover is a one-page template for building simple and beautiful home pages. Download, edit the text, and add your own fullscreen background photo to make it your own.</p>
+    <p class="lead">
+        <form method="post" action="{% url 'home' %}" class="center-container">
+         {% csrf_token %}
+             <div id="search-autocomplete" class="form-outline">
+            <input type="search" id="form1" name="q" class="form-control small-search-bar" />
+            </div>
+            </br>
+            <button class="btn btn-primary ms-2">Find</button>
+        </form>
+    </p>
+  </main>
+{% endblock %}

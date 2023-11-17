@@ -1,0 +1,49 @@
+{% extends 'skillapp/base.html'%}
+{% load bootstrap4 %}
+{% load crispy_forms_tags %}
+{% block content %}
+ <style>
+        body {
+            background-color: #f8f9fa;
+        }
+
+        .login-container {
+            max-width: 400px;
+            margin: auto;
+            padding: 20px;
+            margin-top: 100px;
+            box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+            background-color: #fff;
+            border-radius: 10px;
+        }
+
+        .login-container h2 {
+            text-align: center;
+            color: #008bff;
+        }
+
+        .form-group {
+            margin-bottom: 20px;
+        }
+
+        .login-btn {
+            background-color: #007bff;
+            color: #fff;
+            width: 100%;
+        }
+
+        .login-btn:hover {
+            background-color: #0056b3;
+        }
+    </style>
+   <div class="container login-container">
+        <h2>Login</h2>
+        <form method="post">
+            {% csrf_token %}
+            <div class="form-group">
+                {{ form|crispy }}
+            </div>
+            <button type="submit" class="btn btn-primary login-btn">Login</button>
+        </form>
+    </div>
+{% endblock %}

@@ -1,0 +1,28 @@
+{% extends 'skillapp/base.html' %}
+{% block content %}
+<div class="container mt-4">
+        <div class="row">
+                <div class="col-sm-6 mb-4">
+                    <div class="card bg-secondary">
+                        <div class="card-body">
+                            <h5 class="card-title">{{ user.user.username }}</h5>
+                            <p class="card-text">Bio: {{ user.bio }}</p>
+                            <h6>Expert Location: {{ user.location }}</h6>
+                            <p class="card-text">Expertise Level: {{ user.expertiese_level }}</p>
+                            <p class="card-text">Skills Offered: {{ user.skills_offered }}</p>
+                            <ul class="list-group">
+                                {% for skill in user.skills_offered.all %}
+                                    <li class="list-group-item">{{ skill.name }}</li>
+                                {% endfor %}
+                            </ul>
+                            <div class="mt-3">
+                                <a href="#" class="btn btn-primary mr-2">Contact</a>
+                                <a href="#" class="btn btn-primary">Message</a>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+        </div>
+
+</div>
+{% endblock %}

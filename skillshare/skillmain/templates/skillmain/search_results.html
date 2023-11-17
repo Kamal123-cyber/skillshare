@@ -1,0 +1,33 @@
+{% extends 'skillapp/base.html' %}
+{% block content %}
+<div class="container mt-4">
+    <h2 class="card-title mt-4">Search Results for "{{ query }}"</h2>
+    {% if results %}
+        <div class="row">
+            {% for user_profile in results %}
+                <div class="col-sm-6 mb-4">
+                    <div class="card bg-secondary">
+                        <div class="card-body">
+                            <h5 class="card-title">{{ user_profile.user.username }}</h5>
+                            <h6>Expert Location: {{ user_profile.location }}</h6>
+                            <p class="card-text">Expertise Level: {{ user_profile.expertiese_level }}</p>
+                            <p class="card-text">Skills Offered:</p>
+                            <ul class="list-group">
+                                {% for skill in user_profile.skills_offered.all %}
+                                    <li class="list-group-item">{{ skill.name }}</li>
+                                {% endfor %}
+                            </ul>
+                            <div class="mt-3">
+                                <a href="{% url 'userdetail' user_profile.pk %}" class="btn btn-primary">Details</a>
+                            </div>
+                        </div>
+                    </div>
+
+                </div>
+            {% endfor %}
+        </div>
+    {% else %}
+        <h6 class="text-center">No results found.</h6>
+    {% endif %}
+</div>
+{% endblock %}
